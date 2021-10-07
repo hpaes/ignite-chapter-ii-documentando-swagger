@@ -14,11 +14,9 @@ class ListAllUsersUseCase {
       throw new Error("This user does not exist");
     }
     if (!user.admin) {
-      throw new Error("Cannot access users list");
+      throw new Error("Only admins can access a users list");
     }
-    const admin = this.usersRepository.list();
-
-    return admin;
+    return this.usersRepository.list();
   }
 }
 
